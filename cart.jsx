@@ -162,8 +162,8 @@ const Products = (props) => {
 
   const restockProducts = (url) => {
     doFetch(url);
-    let newItems = data.data.map((item) => { // Why do i have to do it like this?
-      let { name, country, cost, instock } = item;
+    let newItems = data.data.map((item) => { // use data.data.map instead of data.map due to changes with strapi
+      let { name, country, cost, instock } = item.attributes; // add .attributes to item due to changes with strapi
 
       return { name, country, cost, instock };
     });
